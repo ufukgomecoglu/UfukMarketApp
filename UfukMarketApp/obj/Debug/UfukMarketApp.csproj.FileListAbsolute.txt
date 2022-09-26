@@ -1,0 +1,16 @@
+C:\Users\asus\OneDrive\Documents\GitHub\UfukMarketApp\UfukMarketApp\obj\Debug\UfukMarketApp.csproj.AssemblyReference.cache
+C:\Users\asus\OneDrive\Documents\GitHub\UfukMarketApp\UfukMarketApp\obj\Debug\UfukMarketApp.csproj.SuggestedBindingRedirects.cache
+C:\Users\asus\OneDrive\Documents\GitHub\UfukMarketApp\UfukMarketApp\obj\Debug\UfukMarketApp.KullaniciGiris.resources
+C:\Users\asus\OneDrive\Documents\GitHub\UfukMarketApp\UfukMarketApp\obj\Debug\UfukMarketApp.Properties.Resources.resources
+C:\Users\asus\OneDrive\Documents\GitHub\UfukMarketApp\UfukMarketApp\obj\Debug\UfukMarketApp.csproj.GenerateResource.cache
+C:\Users\asus\OneDrive\Documents\GitHub\UfukMarketApp\UfukMarketApp\obj\Debug\UfukMarketApp.csproj.CoreCompileInputs.cache
+C:\Users\asus\OneDrive\Documents\GitHub\UfukMarketApp\UfukMarketApp\bin\Debug\UfukMarketApp.exe.config
+C:\Users\asus\OneDrive\Documents\GitHub\UfukMarketApp\UfukMarketApp\bin\Debug\UfukMarketApp.exe
+C:\Users\asus\OneDrive\Documents\GitHub\UfukMarketApp\UfukMarketApp\bin\Debug\UfukMarketApp.pdb
+C:\Users\asus\OneDrive\Documents\GitHub\UfukMarketApp\UfukMarketApp\bin\Debug\DataAccessLayer.dll
+C:\Users\asus\OneDrive\Documents\GitHub\UfukMarketApp\UfukMarketApp\bin\Debug\DataAccessLayer.pdb
+C:\Users\asus\OneDrive\Documents\GitHub\UfukMarketApp\UfukMarketApp\obj\Debug\UfukMarketApp.csproj.CopyComplete
+C:\Users\asus\OneDrive\Documents\GitHub\UfukMarketApp\UfukMarketApp\obj\Debug\UfukMarketApp.exe
+C:\Users\asus\OneDrive\Documents\GitHub\UfukMarketApp\UfukMarketApp\obj\Debug\UfukMarketApp.pdb
+C:\Users\asus\OneDrive\Documents\GitHub\UfukMarketApp\UfukMarketApp\obj\Debug\UfukMarketApp.AnaForm.resources
+C:\Users\asus\OneDrive\Documents\GitHub\UfukMarketApp\UfukMarketApp\obj\Debug\UfukMarketApp.TedarikciIslemleri.resources
