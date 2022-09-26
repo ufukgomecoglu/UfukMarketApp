@@ -1,0 +1,6 @@
+C:\Users\asus\OneDrive\Documents\GitHub\UfukMarketApp\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\asus\OneDrive\Documents\GitHub\UfukMarketApp\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\asus\OneDrive\Documents\GitHub\UfukMarketApp\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.AssemblyReference.cache
+C:\Users\asus\OneDrive\Documents\GitHub\UfukMarketApp\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\asus\OneDrive\Documents\GitHub\UfukMarketApp\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+C:\Users\asus\OneDrive\Documents\GitHub\UfukMarketApp\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
