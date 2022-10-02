@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_Ekle = new System.Windows.Forms.Button();
@@ -47,8 +48,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_yeniEkle = new System.Windows.Forms.Button();
+            this.btn_guncelle = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.CMSMI_Guncelle = new System.Windows.Forms.ToolStripMenuItem();
+            this.CMSMI_Sil = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -61,9 +68,12 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(886, 384);
             this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btn_yeniEkle);
+            this.groupBox1.Controls.Add(this.btn_guncelle);
             this.groupBox1.Controls.Add(this.btn_Ekle);
             this.groupBox1.Controls.Add(this.cb_Satista);
             this.groupBox1.Controls.Add(this.label8);
@@ -234,6 +244,48 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Firma Adı:";
             // 
+            // btn_yeniEkle
+            // 
+            this.btn_yeniEkle.Location = new System.Drawing.Point(662, 165);
+            this.btn_yeniEkle.Name = "btn_yeniEkle";
+            this.btn_yeniEkle.Size = new System.Drawing.Size(105, 23);
+            this.btn_yeniEkle.TabIndex = 19;
+            this.btn_yeniEkle.Text = "Yeni Ekle";
+            this.btn_yeniEkle.UseVisualStyleBackColor = true;
+            this.btn_yeniEkle.Click += new System.EventHandler(this.btn_yeniEkle_Click);
+            // 
+            // btn_guncelle
+            // 
+            this.btn_guncelle.Location = new System.Drawing.Point(773, 165);
+            this.btn_guncelle.Name = "btn_guncelle";
+            this.btn_guncelle.Size = new System.Drawing.Size(105, 23);
+            this.btn_guncelle.TabIndex = 18;
+            this.btn_guncelle.Text = "Güncelle";
+            this.btn_guncelle.UseVisualStyleBackColor = true;
+            this.btn_guncelle.Click += new System.EventHandler(this.btn_guncelle_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CMSMI_Guncelle,
+            this.CMSMI_Sil});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            // 
+            // CMSMI_Guncelle
+            // 
+            this.CMSMI_Guncelle.Name = "CMSMI_Guncelle";
+            this.CMSMI_Guncelle.Size = new System.Drawing.Size(180, 22);
+            this.CMSMI_Guncelle.Text = "Güncelle";
+            this.CMSMI_Guncelle.Click += new System.EventHandler(this.CMSMI_Guncelle_Click);
+            // 
+            // CMSMI_Sil
+            // 
+            this.CMSMI_Sil.Name = "CMSMI_Sil";
+            this.CMSMI_Sil.Size = new System.Drawing.Size(180, 22);
+            this.CMSMI_Sil.Text = "Sil";
+            this.CMSMI_Sil.Click += new System.EventHandler(this.CMSMI_Sil_Click);
+            // 
             // TedarikciIslemleri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -247,6 +299,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -272,5 +325,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btn_yeniEkle;
+        private System.Windows.Forms.Button btn_guncelle;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem CMSMI_Guncelle;
+        private System.Windows.Forms.ToolStripMenuItem CMSMI_Sil;
     }
 }

@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cb_BeniHatirla = new System.Windows.Forms.CheckBox();
             this.btn_giris = new System.Windows.Forms.Button();
             this.tb_sifre = new System.Windows.Forms.TextBox();
             this.tb_kullaniciAdi = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.cb_BeniHatirla);
             this.groupBox1.Controls.Add(this.btn_giris);
             this.groupBox1.Controls.Add(this.tb_sifre);
             this.groupBox1.Controls.Add(this.tb_kullaniciAdi);
@@ -52,6 +52,17 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Kullanıcı Bilgileri ile Giriş";
+            // 
+            // cb_BeniHatirla
+            // 
+            this.cb_BeniHatirla.AutoSize = true;
+            this.cb_BeniHatirla.Location = new System.Drawing.Point(323, 58);
+            this.cb_BeniHatirla.Name = "cb_BeniHatirla";
+            this.cb_BeniHatirla.Size = new System.Drawing.Size(80, 17);
+            this.cb_BeniHatirla.TabIndex = 5;
+            this.cb_BeniHatirla.Text = "Beni Hatirla";
+            this.cb_BeniHatirla.UseVisualStyleBackColor = true;
+            this.cb_BeniHatirla.CheckedChanged += new System.EventHandler(this.cb_BeniHatirla_CheckedChanged);
             // 
             // btn_giris
             // 
@@ -96,16 +107,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Kullanıcı Adı:";
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(323, 58);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
-            this.checkBox1.TabIndex = 5;
-            this.checkBox1.Text = "Beni Hatirla";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // KullaniciGiris
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -116,6 +117,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "KullaniciGiris";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.KullaniciGiris_FormClosed);
+            this.Load += new System.EventHandler(this.KullaniciGiris_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -130,6 +132,6 @@
         private System.Windows.Forms.TextBox tb_kullaniciAdi;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox cb_BeniHatirla;
     }
 }

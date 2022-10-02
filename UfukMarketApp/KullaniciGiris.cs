@@ -71,5 +71,15 @@ namespace UfukMarketApp
                 Application.Exit();
             }
         }
+
+        private void cb_BeniHatirla_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void KullaniciGiris_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
