@@ -6,30 +6,29 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UfukMarketApp
 {
-    public partial class MarkaIslemleri : Form
+    public partial class BirimIslemleri : Form
     {
         DataModel dm = new DataModel();
-        int markaid = 0;
-        public MarkaIslemleri()
+        int birimid = 0;
+        public BirimIslemleri()
         {
             InitializeComponent();
         }
 
         private void btn_Ekle_Click(object sender, EventArgs e)
         {
-            Marka m = new Marka()
+            Birim b = new Birim()
             {
-                Isim=tb_MarkaAdi.Text,
-                Durum=checkBox_Aktif.Checked
+                Isim = tb_BirimAdi.Text,
+                Durum = checkBox_Aktif.Checked
             };
-            if (dm.MarkaEkle(m))
+            if (dm.BirimEkle(b))
             {
                 MessageBox.Show("Ekleme İşlemi Başarılı", "Bilgi");
             }
@@ -48,10 +47,10 @@ namespace UfukMarketApp
 
         private void btn_Guncelle_Click(object sender, EventArgs e)
         {
-            Marka m = dm.MarkaGetir(markaid);
-            m.Isim = tb_MarkaAdi.Text;
-            m.Durum = checkBox_Aktif.Checked;
-            if (dm.MarkaGuncelle(m))
+            Birim b = dm.BirimGetir(birimid);
+            b.Isim = tb_BirimAdi.Text;
+            b.Durum = checkBox_Aktif.Checked;
+            if (dm.BirimGuncelle(b))
             {
                 MessageBox.Show("Güncelleme işlemi başarılı", "Başarılı");
             }
@@ -61,23 +60,47 @@ namespace UfukMarketApp
             }
             FormTemizle();
             GridDoldur();
+
+        }
+
+        private void BirimIslemleri_Load(object sender, EventArgs e)
+        {
+            GridDoldur();
+            btn_Guncelle.Visible = false;
+            btn_YeniEkle.Enabled = false;
         }
         private void GridDoldur()
         {
-            dataGridView1.DataSource = dm.MarkaListeleReader();
+            dataGridView1.DataSource = dm.BirimListeleReader();
         }
         private void FormTemizle()
         {
             btn_Guncelle.Visible = false;
             btn_YeniEkle.Enabled = false;
-            tb_MarkaAdi.Text = "";
+            tb_BirimAdi.Text = "";
         }
 
-        private void MarkaIslemleri_Load(object sender, EventArgs e)
+        private void CMSMI_Guncelle_Click(object sender, EventArgs e)
         {
+            Birim b = dm.BirimGetir(birimid);
+            tb_BirimAdi.Text = b.Isim;
+            checkBox_Aktif.Checked = b.Durum;
+            btn_Guncelle.Visible = true;
+            btn_YeniEkle.Enabled = true;
+        }
+
+        private void CMSMI_Sil_Click(object sender, EventArgs e)
+        {
+            string isim = dm.BirimGetir(birimid).Isim;
+            if (MessageBox.Show(isim + "\nBirim Silinecek. Emin misin?", "Tedarikçi Sil", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                dm.BirimSil(birimid);
+            }
+            else
+            {
+                MessageBox.Show("Kullanıcı Silme İşlemini İptal Etti", "İptal");
+            }
             GridDoldur();
-            btn_Guncelle.Visible = false;
-            btn_YeniEkle.Enabled = false;
         }
 
         private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
@@ -90,33 +113,10 @@ namespace UfukMarketApp
                 if (hit.RowIndex != -1)
                 {
                     dataGridView1.Rows[hit.RowIndex].Selected = true;
-                    markaid = Convert.ToInt32(dataGridView1.Rows[hit.RowIndex].Cells["ID"].Value);
+                    birimid = Convert.ToInt32(dataGridView1.Rows[hit.RowIndex].Cells["ID"].Value);
                     contextMenuStrip1.Show(dataGridView1, new Point(e.X, e.Y));
                 }
             }
-        }
-
-        private void CMSMI_Guncelle_Click(object sender, EventArgs e)
-        {
-            Marka m = dm.MarkaGetir(markaid);
-            tb_MarkaAdi.Text = m.Isim;
-            checkBox_Aktif.Checked = m.Durum;
-            btn_Guncelle.Visible = true;
-            btn_YeniEkle.Enabled = true;
-        }
-
-        private void CMSMI_Sil_Click(object sender, EventArgs e)
-        {
-            string isim = dm.MarkaGetir(markaid).Isim;
-            if (MessageBox.Show(isim + "\nMarka Silinecek. Emin misin?", "Tedarikçi Sil", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                dm.MarkaSil(markaid);
-            }
-            else
-            {
-                MessageBox.Show("Kullanıcı Silme İşlemini İptal Etti", "İptal");
-            }
-            GridDoldur();
         }
     }
 }

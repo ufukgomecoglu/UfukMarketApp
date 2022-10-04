@@ -546,5 +546,132 @@ namespace DataAccessLayer
             }
         }
         #endregion
+        #region Birim Metotları
+        public List<Birim> BirimListeleReader()
+        {
+            List<Birim> birimler = new List<Birim>();
+            try
+            {
+                cmd.CommandText = "SELECT ID,Isim,Durum FROM Birimler WHERE Silinmis=0";
+                cmd.Parameters.Clear();
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    birimler.Add(new Birim()
+                    {
+                        ID = reader.GetInt32(0),
+                        Isim = reader.GetString(1),
+                        Durum = reader.GetBoolean(2)
+                    });
+                }
+                return birimler;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public bool BirimEkle(Birim b)
+        {
+            try
+            {
+                cmd.CommandText = "INSERT INTO Birimler(Isim,Durum,Silinmis) VALUES(@isim,@durum,0)";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@isim", b.Isim);
+                cmd.Parameters.AddWithValue("@durum", b.Durum);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public Birim BirimGetir(int id)
+        {
+            try
+            {
+                Birim b = new Birim();
+                cmd.CommandText = "SELECT ID,Isim,Durum FROM Birimler WHERE ID=@id";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id", id);
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    b = new Birim()
+                    {
+                        ID = reader.GetInt32(0),
+                        Isim = reader.GetString(1),
+                        Durum = reader.GetBoolean(2)
+                    };
+                }
+                return b;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public bool BirimSil(int id)
+        {
+            try
+            {
+                cmd.CommandText = "UPDATE Birimler SET Silinmis=1 WHERE ID= @id";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id", id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public bool BirimGuncelle(Birim model)
+        {
+            try
+            {
+                cmd.CommandText = "UPDATE Birimler SET Isim=@isim, Durum=@durum WHERE ID=@id";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id", model.ID);
+                cmd.Parameters.AddWithValue("@isim", model.Isim);
+                cmd.Parameters.AddWithValue("@durum", model.Durum);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        #endregion
     }
 }

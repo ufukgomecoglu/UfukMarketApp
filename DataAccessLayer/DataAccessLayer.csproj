@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ConnectionStrings.cs" />
     <Compile Include="DataModel.cs" />
+    <Compile Include="Model\Birim.cs" />
     <Compile Include="Model\Ilce.cs" />
     <Compile Include="Model\Kategori.cs" />
     <Compile Include="Model\Kullanici.cs" />

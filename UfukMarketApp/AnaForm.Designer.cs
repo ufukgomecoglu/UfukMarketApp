@@ -37,6 +37,8 @@
             this.TSMI_KategoriIslemleri = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.TSMI_MarkaIslemleri = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.TSMI_BirimIslemleri = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -74,7 +76,9 @@
             this.toolStripSeparator1,
             this.TSMI_KategoriIslemleri,
             this.toolStripSeparator2,
-            this.TSMI_MarkaIslemleri});
+            this.TSMI_MarkaIslemleri,
+            this.toolStripSeparator3,
+            this.TSMI_BirimIslemleri});
             this.işlemlerToolStripMenuItem.Name = "işlemlerToolStripMenuItem";
             this.işlemlerToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.işlemlerToolStripMenuItem.Text = "İşlemler";
@@ -110,6 +114,18 @@
             this.TSMI_MarkaIslemleri.Text = "Marka İşlemleri";
             this.TSMI_MarkaIslemleri.Click += new System.EventHandler(this.TSMI_MarkaIslemleri_Click);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            // 
+            // TSMI_BirimIslemleri
+            // 
+            this.TSMI_BirimIslemleri.Name = "TSMI_BirimIslemleri";
+            this.TSMI_BirimIslemleri.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_BirimIslemleri.Text = "Birim İşlemleri";
+            this.TSMI_BirimIslemleri.Click += new System.EventHandler(this.TSMI_BirimIslemleri_Click);
+            // 
             // AnaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -141,5 +157,7 @@
         private System.Windows.Forms.ToolStripMenuItem TSMI_KategoriIslemleri;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem TSMI_MarkaIslemleri;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_BirimIslemleri;
     }
 }

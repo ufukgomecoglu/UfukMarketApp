@@ -52,6 +52,12 @@
     <Compile Include="AnaForm.Designer.cs">
       <DependentUpon>AnaForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BirimIslemleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BirimIslemleri.Designer.cs">
+      <DependentUpon>BirimIslemleri.cs</DependentUpon>
+    </Compile>
     <Compile Include="KategoriIslemleri.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,9 @@
     </Compile>
     <EmbeddedResource Include="AnaForm.resx">
       <DependentUpon>AnaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BirimIslemleri.resx">
+      <DependentUpon>BirimIslemleri.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KategoriIslemleri.resx">
       <DependentUpon>KategoriIslemleri.cs</DependentUpon>

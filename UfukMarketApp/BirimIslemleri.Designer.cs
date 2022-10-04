@@ -1,6 +1,6 @@
 ﻿namespace UfukMarketApp
 {
-    partial class MarkaIslemleri
+    partial class BirimIslemleri
     {
         /// <summary>
         /// Required designer variable.
@@ -35,7 +35,7 @@
             this.btn_YeniEkle = new System.Windows.Forms.Button();
             this.btn_Ekle = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.tb_MarkaAdi = new System.Windows.Forms.TextBox();
+            this.tb_BirimAdi = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.CMSMI_Guncelle = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,22 +52,22 @@
             this.groupBox1.Controls.Add(this.btn_YeniEkle);
             this.groupBox1.Controls.Add(this.btn_Ekle);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.tb_MarkaAdi);
-            this.groupBox1.Location = new System.Drawing.Point(13, 13);
+            this.groupBox1.Controls.Add(this.tb_BirimAdi);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(552, 76);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.Size = new System.Drawing.Size(552, 74);
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Marka Bilgileri";
+            this.groupBox1.Text = "Birim Bilgileri";
             // 
             // checkBox_Aktif
             // 
             this.checkBox_Aktif.AutoSize = true;
-            this.checkBox_Aktif.Location = new System.Drawing.Point(9, 48);
+            this.checkBox_Aktif.Location = new System.Drawing.Point(9, 49);
             this.checkBox_Aktif.Name = "checkBox_Aktif";
-            this.checkBox_Aktif.Size = new System.Drawing.Size(80, 17);
+            this.checkBox_Aktif.Size = new System.Drawing.Size(72, 17);
             this.checkBox_Aktif.TabIndex = 9;
-            this.checkBox_Aktif.Text = "Aktif Marka";
+            this.checkBox_Aktif.Text = "Aktif Birim";
             this.checkBox_Aktif.UseVisualStyleBackColor = true;
             // 
             // btn_Guncelle
@@ -82,7 +82,7 @@
             // 
             // btn_YeniEkle
             // 
-            this.btn_YeniEkle.Location = new System.Drawing.Point(381, 45);
+            this.btn_YeniEkle.Location = new System.Drawing.Point(381, 46);
             this.btn_YeniEkle.Name = "btn_YeniEkle";
             this.btn_YeniEkle.Size = new System.Drawing.Size(75, 23);
             this.btn_YeniEkle.TabIndex = 10;
@@ -92,7 +92,7 @@
             // 
             // btn_Ekle
             // 
-            this.btn_Ekle.Location = new System.Drawing.Point(462, 44);
+            this.btn_Ekle.Location = new System.Drawing.Point(462, 45);
             this.btn_Ekle.Name = "btn_Ekle";
             this.btn_Ekle.Size = new System.Drawing.Size(75, 23);
             this.btn_Ekle.TabIndex = 8;
@@ -103,18 +103,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 25);
+            this.label1.Location = new System.Drawing.Point(6, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 13);
+            this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Marka adı";
+            this.label1.Text = "Birim adı";
             // 
-            // tb_MarkaAdi
+            // tb_BirimAdi
             // 
-            this.tb_MarkaAdi.Location = new System.Drawing.Point(66, 18);
-            this.tb_MarkaAdi.Name = "tb_MarkaAdi";
-            this.tb_MarkaAdi.Size = new System.Drawing.Size(471, 20);
-            this.tb_MarkaAdi.TabIndex = 7;
+            this.tb_BirimAdi.Location = new System.Drawing.Point(66, 19);
+            this.tb_BirimAdi.Name = "tb_BirimAdi";
+            this.tb_BirimAdi.Size = new System.Drawing.Size(471, 20);
+            this.tb_BirimAdi.TabIndex = 7;
             // 
             // dataGridView1
             // 
@@ -122,10 +122,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 95);
+            this.dataGridView1.Location = new System.Drawing.Point(13, 93);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(552, 343);
-            this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.Size = new System.Drawing.Size(551, 345);
+            this.dataGridView1.TabIndex = 2;
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
             // contextMenuStrip1
@@ -139,27 +139,27 @@
             // CMSMI_Guncelle
             // 
             this.CMSMI_Guncelle.Name = "CMSMI_Guncelle";
-            this.CMSMI_Guncelle.Size = new System.Drawing.Size(120, 22);
+            this.CMSMI_Guncelle.Size = new System.Drawing.Size(180, 22);
             this.CMSMI_Guncelle.Text = "Güncelle";
             this.CMSMI_Guncelle.Click += new System.EventHandler(this.CMSMI_Guncelle_Click);
             // 
             // CMSMI_Sil
             // 
             this.CMSMI_Sil.Name = "CMSMI_Sil";
-            this.CMSMI_Sil.Size = new System.Drawing.Size(120, 22);
+            this.CMSMI_Sil.Size = new System.Drawing.Size(180, 22);
             this.CMSMI_Sil.Text = "Sil";
             this.CMSMI_Sil.Click += new System.EventHandler(this.CMSMI_Sil_Click);
             // 
-            // MarkaIslemleri
+            // BirimIslemleri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(592, 450);
+            this.ClientSize = new System.Drawing.Size(572, 450);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
-            this.Name = "MarkaIslemleri";
-            this.Text = "Marka İşlemleri";
-            this.Load += new System.EventHandler(this.MarkaIslemleri_Load);
+            this.Name = "BirimIslemleri";
+            this.Text = "Birim İşlemleri";
+            this.Load += new System.EventHandler(this.BirimIslemleri_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -171,12 +171,12 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox checkBox_Aktif;
         private System.Windows.Forms.Button btn_Guncelle;
         private System.Windows.Forms.Button btn_YeniEkle;
-        private System.Windows.Forms.CheckBox checkBox_Aktif;
         private System.Windows.Forms.Button btn_Ekle;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tb_MarkaAdi;
+        private System.Windows.Forms.TextBox tb_BirimAdi;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem CMSMI_Guncelle;

@@ -32,3 +32,4 @@ C:\Users\ufukg\Documents\GitHub\UfukMarketApp\UfukMarketApp\obj\Debug\UfukMarket
 C:\Users\ufukg\Documents\GitHub\UfukMarketApp\UfukMarketApp\obj\Debug\UfukMarketApp.pdb
 C:\Users\ufukg\Documents\GitHub\UfukMarketApp\UfukMarketApp\obj\Debug\UfukMarketApp.KategoriIslemleri.resources
 C:\Users\ufukg\Documents\GitHub\UfukMarketApp\UfukMarketApp\obj\Debug\UfukMarketApp.MarkaIslemleri.resources
+C:\Users\ufukg\Documents\GitHub\UfukMarketApp\UfukMarketApp\obj\Debug\UfukMarketApp.BirimIslemleri.resources
