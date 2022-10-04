@@ -28,7 +28,7 @@ namespace UfukMarketApp
 
         private void btn_Guncelle_Click(object sender, EventArgs e)
         {
-            Kategori k  = dm.KategoriGetir(kategoriid);
+            Kategori k = dm.KategoriGetir(kategoriid);
             if (cb_KategoriSec.SelectedItem != null)
             {
                 k.Isim = tb_KategoriAdi.Text;
@@ -59,21 +59,15 @@ namespace UfukMarketApp
             Kategori k = new Kategori();
             if (cb_KategoriSec.SelectedItem != null)
             {
-                k = new Kategori()
-                {
-                    Isim = tb_KategoriAdi.Text,
-                    UstKategori_ID = Convert.ToInt32(cb_KategoriSec.SelectedValue),
-                    Durum = checkBox_Aktif.Checked
-                };
+                k.Isim = tb_KategoriAdi.Text;
+                k.UstKategori_ID = Convert.ToInt32(cb_KategoriSec.SelectedValue);
+                k.Durum = checkBox_Aktif.Checked;
             }
             else
             {
-                k = new Kategori()
-                {
-                    Isim = tb_KategoriAdi.Text,
-                    UstKategori_ID = 0,
-                    Durum = checkBox_Aktif.Checked
-                };
+                k.Isim = tb_KategoriAdi.Text;
+                k.UstKategori_ID = 0;
+                k.Durum = checkBox_Aktif.Checked;
             }
             if (dm.KategoriEkle(k))
             {
@@ -88,7 +82,7 @@ namespace UfukMarketApp
         }
         private void CbDoldur()
         {
-            if (dm.KategoriListeleReader().Count!=0)
+            if (dm.KategoriListeleReader().Count != 0)
             {
                 cb_KategoriSec.DataSource = dm.KategoriListeleReader();
                 cb_KategoriSec.ValueMember = "ID";
@@ -114,13 +108,13 @@ namespace UfukMarketApp
         private void GridDoldur()
         {
             dataGridView1.DataSource = dm.KategoriListeleReader();
-            dataGridView1.Columns["Silinmis"].Visible =  false;
+            dataGridView1.Columns["Silinmis"].Visible = false;
         }
         private void FormTemizle()
         {
             btn_Guncelle.Visible = false;
             btn_YeniEkle.Enabled = false;
-            tb_KategoriAdi.Text =  "";
+            tb_KategoriAdi.Text = "";
             CbDoldur();
         }
 
@@ -145,9 +139,9 @@ namespace UfukMarketApp
             Kategori k = dm.KategoriGetir(kategoriid);
             tb_KategoriAdi.Text = k.Isim;
             checkBox_Aktif.Checked = k.Durum;
-            if (k.UstKategori_ID!=0)
+            if (k.UstKategori_ID != 0)
             {
-                cb_KategoriSec.Text= dm.KategoriGetir(k.UstKategori_ID).Isim;
+                cb_KategoriSec.Text = dm.KategoriGetir(k.UstKategori_ID).Isim;
             }
             btn_Guncelle.Visible = true;
             btn_YeniEkle.Enabled = true;

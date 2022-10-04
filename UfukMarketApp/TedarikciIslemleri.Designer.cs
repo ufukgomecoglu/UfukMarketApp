@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_yeniEkle = new System.Windows.Forms.Button();
+            this.btn_guncelle = new System.Windows.Forms.Button();
             this.btn_Ekle = new System.Windows.Forms.Button();
             this.cb_Satista = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -48,8 +50,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btn_yeniEkle = new System.Windows.Forms.Button();
-            this.btn_guncelle = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.CMSMI_Guncelle = new System.Windows.Forms.ToolStripMenuItem();
             this.CMSMI_Sil = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,6 +97,26 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tedarikçi Bilgileri";
+            // 
+            // btn_yeniEkle
+            // 
+            this.btn_yeniEkle.Location = new System.Drawing.Point(662, 165);
+            this.btn_yeniEkle.Name = "btn_yeniEkle";
+            this.btn_yeniEkle.Size = new System.Drawing.Size(105, 23);
+            this.btn_yeniEkle.TabIndex = 19;
+            this.btn_yeniEkle.Text = "Yeni Ekle";
+            this.btn_yeniEkle.UseVisualStyleBackColor = true;
+            this.btn_yeniEkle.Click += new System.EventHandler(this.btn_yeniEkle_Click);
+            // 
+            // btn_guncelle
+            // 
+            this.btn_guncelle.Location = new System.Drawing.Point(773, 165);
+            this.btn_guncelle.Name = "btn_guncelle";
+            this.btn_guncelle.Size = new System.Drawing.Size(105, 23);
+            this.btn_guncelle.TabIndex = 18;
+            this.btn_guncelle.Text = "Güncelle";
+            this.btn_guncelle.UseVisualStyleBackColor = true;
+            this.btn_guncelle.Click += new System.EventHandler(this.btn_guncelle_Click);
             // 
             // btn_Ekle
             // 
@@ -244,45 +264,25 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Firma Adı:";
             // 
-            // btn_yeniEkle
-            // 
-            this.btn_yeniEkle.Location = new System.Drawing.Point(662, 165);
-            this.btn_yeniEkle.Name = "btn_yeniEkle";
-            this.btn_yeniEkle.Size = new System.Drawing.Size(105, 23);
-            this.btn_yeniEkle.TabIndex = 19;
-            this.btn_yeniEkle.Text = "Yeni Ekle";
-            this.btn_yeniEkle.UseVisualStyleBackColor = true;
-            this.btn_yeniEkle.Click += new System.EventHandler(this.btn_yeniEkle_Click);
-            // 
-            // btn_guncelle
-            // 
-            this.btn_guncelle.Location = new System.Drawing.Point(773, 165);
-            this.btn_guncelle.Name = "btn_guncelle";
-            this.btn_guncelle.Size = new System.Drawing.Size(105, 23);
-            this.btn_guncelle.TabIndex = 18;
-            this.btn_guncelle.Text = "Güncelle";
-            this.btn_guncelle.UseVisualStyleBackColor = true;
-            this.btn_guncelle.Click += new System.EventHandler(this.btn_guncelle_Click);
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CMSMI_Guncelle,
             this.CMSMI_Sil});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(121, 48);
             // 
             // CMSMI_Guncelle
             // 
             this.CMSMI_Guncelle.Name = "CMSMI_Guncelle";
-            this.CMSMI_Guncelle.Size = new System.Drawing.Size(180, 22);
+            this.CMSMI_Guncelle.Size = new System.Drawing.Size(120, 22);
             this.CMSMI_Guncelle.Text = "Güncelle";
             this.CMSMI_Guncelle.Click += new System.EventHandler(this.CMSMI_Guncelle_Click);
             // 
             // CMSMI_Sil
             // 
             this.CMSMI_Sil.Name = "CMSMI_Sil";
-            this.CMSMI_Sil.Size = new System.Drawing.Size(180, 22);
+            this.CMSMI_Sil.Size = new System.Drawing.Size(120, 22);
             this.CMSMI_Sil.Text = "Sil";
             this.CMSMI_Sil.Click += new System.EventHandler(this.CMSMI_Sil_Click);
             // 
@@ -294,7 +294,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.Name = "TedarikciIslemleri";
-            this.Text = "TedarikciIslemleri";
+            this.Text = "Tedarikçi İşlemleri";
             this.Load += new System.EventHandler(this.TedarikciIslemleri_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);

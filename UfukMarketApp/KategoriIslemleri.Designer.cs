@@ -179,7 +179,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox2);
             this.Name = "KategoriIslemleri";
-            this.Text = "KategoriIslemleri";
+            this.Text = "Kategori İşlemleri";
             this.Load += new System.EventHandler(this.KategoriIslemleri_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

@@ -40,7 +40,6 @@ namespace UfukMarketApp
                 GridDoldur();
                 FormTemizle();
                 MessageBox.Show("Ekleme İşlemi Başarılı", "Bilgi");
-
             }
             else
             {

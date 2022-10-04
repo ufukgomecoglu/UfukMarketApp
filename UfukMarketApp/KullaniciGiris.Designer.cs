@@ -115,7 +115,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "KullaniciGiris";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "KullaniciGiris";
+            this.Text = "Kullanıcı Giriş";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.KullaniciGiris_FormClosed);
             this.Load += new System.EventHandler(this.KullaniciGiris_Load);
             this.groupBox1.ResumeLayout(false);

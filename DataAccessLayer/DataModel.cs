@@ -59,7 +59,6 @@ namespace DataAccessLayer
         }
 
         #endregion
-
         #region Tedarikçi Metotları
 
         public List<Tedarikci> TedarikciListeleReader()
@@ -101,7 +100,6 @@ namespace DataAccessLayer
                 con.Close();
             }
         }
-
         public bool TedarikciEkle(Tedarikci model)
         {
             try
@@ -217,9 +215,7 @@ namespace DataAccessLayer
         }
 
         #endregion
-
         #region Şehir İlçe Metotları
-
         public List<Sehir> SehirleriListele()
         {
             List<Sehir> Sehirler = new List<Sehir>();
@@ -245,7 +241,6 @@ namespace DataAccessLayer
                 con.Close();
             }
         }
-
         public List<Ilce> IlceleriListele(int sehirID)
         {
             List<Ilce> ilceler = new List<Ilce>();
@@ -273,8 +268,6 @@ namespace DataAccessLayer
                 con.Close();
             }
         }
-
-
         #endregion
         #region Kategori Metotları
         public bool KategoriEkle(Kategori k)
@@ -418,6 +411,133 @@ namespace DataAccessLayer
             catch (Exception)
             {
 
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        #endregion
+        #region Marka Metotları 
+        public List<Marka> MarkaListeleReader()
+        {
+            List<Marka> markalar = new List<Marka>();
+            try
+            {
+                cmd.CommandText = "SELECT ID,Isim,Durum FROM Markalar WHERE Silinmis=0";
+                cmd.Parameters.Clear();
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    markalar.Add(new Marka()
+                    {
+                        ID = reader.GetInt32(0),
+                        Isim = reader.GetString(1),
+                        Durum = reader.GetBoolean(2)
+                    });
+                }
+                return markalar;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public bool MarkaEkle(Marka m)
+        {
+            try
+            {
+                cmd.CommandText = "INSERT INTO Markalar(Isim,Durum,Silinmis) VALUES(@isim,@durum,0)";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@isim", m.Isim);
+                cmd.Parameters.AddWithValue("@durum", m.Durum);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public Marka MarkaGetir(int id)
+        {
+            try
+            {
+                Marka m = new Marka();
+                cmd.CommandText = "SELECT ID,Isim,Durum FROM Markalar WHERE ID=@id";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id", id);
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    m = new Marka()
+                    {
+                        ID = reader.GetInt32(0),
+                        Isim= reader.GetString(1),
+                        Durum = reader.GetBoolean(2)
+                    };
+                }
+                return m;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public bool MarkaSil(int id)
+        {
+            try
+            {
+                cmd.CommandText = "UPDATE Markalar SET Silinmis=1 WHERE ID= @id";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id", id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public bool MarkaGuncelle(Marka model)
+        {
+            try
+            {
+                cmd.CommandText = "UPDATE Markalar SET Isim=@isim, Durum=@durum WHERE ID=@id";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id", model.ID);
+                cmd.Parameters.AddWithValue("@isim", model.Isim);
+                cmd.Parameters.AddWithValue("@durum", model.Durum);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
                 return false;
             }
             finally
