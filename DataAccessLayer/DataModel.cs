@@ -281,9 +281,16 @@ namespace DataAccessLayer
         {
             try
             {
-                cmd.CommandText = "INSERT INTO Kategoriler(UstKategori_ID,Isim,Durum) VALUES(@ustKategori_ID,@isim,@durum) ";
+                cmd.CommandText = "INSERT INTO Kategoriler(UstKategori_ID,Isim,Durum,Silinmis) VALUES(@ustKategori_ID,@isim,@durum,0) ";
                 cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@ustKategori_ID", k.UstKategori_ID);
+                if (k.UstKategori_ID == 0)
+                {
+                    cmd.Parameters.AddWithValue("@ustKategori_ID", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@ustKategori_ID", k.UstKategori_ID);
+                }
                 cmd.Parameters.AddWithValue("@isim", k.Isim);
                 cmd.Parameters.AddWithValue("@durum", k.Durum);
                 con.Open();
@@ -295,12 +302,129 @@ namespace DataAccessLayer
 
                 return false;
             }
-            finally 
+            finally
             {
                 con.Close();
             }
         }
+        public List<Kategori> KategoriListeleReader()
+        {
+            try
+            {
+                List<Kategori> kategoriler = new List<Kategori>();
+                cmd.CommandText = "SELECT * FROM Kategoriler WHERE Silinmis=0";
+                cmd.Parameters.Clear();
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Kategori k = new Kategori();
+                    k.ID = reader.GetInt32(0);
+                    if (!reader.IsDBNull(1))
+                    {
+                        k.UstKategori_ID = reader.GetInt32(1);
+                    }
+                    k.Isim = reader.GetString(2);
+                    k.Durum = reader.GetBoolean(3);
+                    k.Silinmis = reader.GetBoolean(4);
+                    kategoriler.Add(k);
+                }
+                return kategoriler;
+            }
+            catch (Exception)
+            {
 
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public Kategori KategoriGetir(int id)
+        {
+            try
+            {
+                Kategori k = new Kategori();
+                cmd.CommandText = "SELECT * FROM Kategoriler WHERE ID=@id";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id", id);
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    k.ID = reader.GetInt32(0);
+                    if (!reader.IsDBNull(1))
+                    {
+                        k.UstKategori_ID = reader.GetInt32(1);
+                    }
+                    k.Isim = reader.GetString(2);
+                    k.Durum = reader.GetBoolean(3);
+                    k.Silinmis = reader.GetBoolean(4);
+                }
+                return k;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public bool KategoriSil(int id)
+        {
+            try
+            {
+                cmd.CommandText = "UPDATE Kategoriler SET Silinmis=1 WHERE ID= @id";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id", id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public bool KategoriGuncelle(Kategori model)
+        {
+            try
+            {
+                cmd.CommandText = "UPDATE Kategoriler SET Isim=@isim, UstKategori_ID =@ustKategori_ID, Durum = @durum WHERE ID=@id";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id", model.ID);
+                cmd.Parameters.AddWithValue("@isim", model.Isim);
+                if (model.UstKategori_ID == 0)
+                {
+                    cmd.Parameters.AddWithValue("@ustKategori_ID", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@ustKategori_ID", model.UstKategori_ID);
+                }
+                cmd.Parameters.AddWithValue("@durum", model.Durum);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
         #endregion
     }
 }

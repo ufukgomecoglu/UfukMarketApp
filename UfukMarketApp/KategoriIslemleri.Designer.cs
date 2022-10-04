@@ -31,17 +31,17 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.tb_KategoriAdi = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cb_KategoriSec = new System.Windows.Forms.ComboBox();
-            this.btn_KategoriEkle = new System.Windows.Forms.Button();
+            this.btn_Guncelle = new System.Windows.Forms.Button();
+            this.btn_YeniEkle = new System.Windows.Forms.Button();
             this.checkBox_Aktif = new System.Windows.Forms.CheckBox();
+            this.btn_KategoriEkle = new System.Windows.Forms.Button();
+            this.cb_KategoriSec = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tb_KategoriAdi = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.CMSMI_Guncelle = new System.Windows.Forms.ToolStripMenuItem();
             this.CMSMI_Sil = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btn_YeniEkle = new System.Windows.Forms.Button();
-            this.btn_Guncelle = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -73,29 +73,35 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kategori Bilgileri";
             // 
-            // tb_KategoriAdi
+            // btn_Guncelle
             // 
-            this.tb_KategoriAdi.Location = new System.Drawing.Point(90, 44);
-            this.tb_KategoriAdi.Name = "tb_KategoriAdi";
-            this.tb_KategoriAdi.Size = new System.Drawing.Size(471, 20);
-            this.tb_KategoriAdi.TabIndex = 1;
+            this.btn_Guncelle.Location = new System.Drawing.Point(486, 70);
+            this.btn_Guncelle.Name = "btn_Guncelle";
+            this.btn_Guncelle.Size = new System.Drawing.Size(75, 23);
+            this.btn_Guncelle.TabIndex = 5;
+            this.btn_Guncelle.Text = "Güncelle";
+            this.btn_Guncelle.UseVisualStyleBackColor = true;
+            this.btn_Guncelle.Click += new System.EventHandler(this.btn_Guncelle_Click);
             // 
-            // label3
+            // btn_YeniEkle
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 28);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Kategori Seç";
+            this.btn_YeniEkle.Location = new System.Drawing.Point(405, 69);
+            this.btn_YeniEkle.Name = "btn_YeniEkle";
+            this.btn_YeniEkle.Size = new System.Drawing.Size(75, 23);
+            this.btn_YeniEkle.TabIndex = 4;
+            this.btn_YeniEkle.Text = "Yeni Ekle";
+            this.btn_YeniEkle.UseVisualStyleBackColor = true;
+            this.btn_YeniEkle.Click += new System.EventHandler(this.btn_YeniEkle_Click);
             // 
-            // cb_KategoriSec
+            // checkBox_Aktif
             // 
-            this.cb_KategoriSec.FormattingEnabled = true;
-            this.cb_KategoriSec.Location = new System.Drawing.Point(90, 20);
-            this.cb_KategoriSec.Name = "cb_KategoriSec";
-            this.cb_KategoriSec.Size = new System.Drawing.Size(471, 21);
-            this.cb_KategoriSec.TabIndex = 3;
+            this.checkBox_Aktif.AutoSize = true;
+            this.checkBox_Aktif.Location = new System.Drawing.Point(19, 76);
+            this.checkBox_Aktif.Name = "checkBox_Aktif";
+            this.checkBox_Aktif.Size = new System.Drawing.Size(89, 17);
+            this.checkBox_Aktif.TabIndex = 3;
+            this.checkBox_Aktif.Text = "Aktif Kategori";
+            this.checkBox_Aktif.UseVisualStyleBackColor = true;
             // 
             // btn_KategoriEkle
             // 
@@ -107,15 +113,29 @@
             this.btn_KategoriEkle.UseVisualStyleBackColor = true;
             this.btn_KategoriEkle.Click += new System.EventHandler(this.btn_KategoriEkle_Click);
             // 
-            // checkBox_Aktif
+            // cb_KategoriSec
             // 
-            this.checkBox_Aktif.AutoSize = true;
-            this.checkBox_Aktif.Location = new System.Drawing.Point(19, 76);
-            this.checkBox_Aktif.Name = "checkBox_Aktif";
-            this.checkBox_Aktif.Size = new System.Drawing.Size(89, 17);
-            this.checkBox_Aktif.TabIndex = 3;
-            this.checkBox_Aktif.Text = "Aktif Kategori";
-            this.checkBox_Aktif.UseVisualStyleBackColor = true;
+            this.cb_KategoriSec.FormattingEnabled = true;
+            this.cb_KategoriSec.Location = new System.Drawing.Point(90, 20);
+            this.cb_KategoriSec.Name = "cb_KategoriSec";
+            this.cb_KategoriSec.Size = new System.Drawing.Size(471, 21);
+            this.cb_KategoriSec.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 28);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Kategori Seç";
+            // 
+            // tb_KategoriAdi
+            // 
+            this.tb_KategoriAdi.Location = new System.Drawing.Point(90, 44);
+            this.tb_KategoriAdi.Name = "tb_KategoriAdi";
+            this.tb_KategoriAdi.Size = new System.Drawing.Size(471, 20);
+            this.tb_KategoriAdi.TabIndex = 1;
             // 
             // contextMenuStrip1
             // 
@@ -130,12 +150,14 @@
             this.CMSMI_Guncelle.Name = "CMSMI_Guncelle";
             this.CMSMI_Guncelle.Size = new System.Drawing.Size(120, 22);
             this.CMSMI_Guncelle.Text = "Güncelle";
+            this.CMSMI_Guncelle.Click += new System.EventHandler(this.CMSMI_Guncelle_Click);
             // 
             // CMSMI_Sil
             // 
             this.CMSMI_Sil.Name = "CMSMI_Sil";
             this.CMSMI_Sil.Size = new System.Drawing.Size(120, 22);
             this.CMSMI_Sil.Text = "Sil";
+            this.CMSMI_Sil.Click += new System.EventHandler(this.CMSMI_Sil_Click);
             // 
             // dataGridView1
             // 
@@ -147,26 +169,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(567, 288);
             this.dataGridView1.TabIndex = 2;
-            // 
-            // btn_YeniEkle
-            // 
-            this.btn_YeniEkle.Location = new System.Drawing.Point(405, 69);
-            this.btn_YeniEkle.Name = "btn_YeniEkle";
-            this.btn_YeniEkle.Size = new System.Drawing.Size(75, 23);
-            this.btn_YeniEkle.TabIndex = 4;
-            this.btn_YeniEkle.Text = "Yeni Ekle";
-            this.btn_YeniEkle.UseVisualStyleBackColor = true;
-            this.btn_YeniEkle.Click += new System.EventHandler(this.btn_YeniEkle_Click);
-            // 
-            // btn_Guncelle
-            // 
-            this.btn_Guncelle.Location = new System.Drawing.Point(486, 70);
-            this.btn_Guncelle.Name = "btn_Guncelle";
-            this.btn_Guncelle.Size = new System.Drawing.Size(75, 23);
-            this.btn_Guncelle.TabIndex = 5;
-            this.btn_Guncelle.Text = "Güncelle";
-            this.btn_Guncelle.UseVisualStyleBackColor = true;
-            this.btn_Guncelle.Click += new System.EventHandler(this.btn_Guncelle_Click);
+            this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
             // KategoriIslemleri
             // 
@@ -177,6 +180,7 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "KategoriIslemleri";
             this.Text = "KategoriIslemleri";
+            this.Load += new System.EventHandler(this.KategoriIslemleri_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
