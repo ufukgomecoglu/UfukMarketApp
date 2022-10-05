@@ -50,17 +50,21 @@ namespace UfukMarketApp
         private void btn_Guncelle_Click(object sender, EventArgs e)
         {
             SatinAlma s = dm.SatinAlmaGetir(satinalmaid);
+            decimal eskisatinalinan = s.BirimAdet;
             s.Urun_ID = Convert.ToInt32(cb_urun.SelectedValue);
             s.Tedarikci_ID = Convert.ToInt32(cb_tedarikci.SelectedValue);
             s.BirimAdet = Convert.ToDecimal(tb_miktar.Text);
             s.AlisFiyati = Convert.ToDecimal(tb_alisfiyati.Text);
             s.AlisTarihi = Convert.ToDateTime(mtb_alindigitarih.Text);
+            Urun u = dm.UrunGetir(s.Urun_ID);
+            u.Stok = u.Stok - eskisatinalinan;
+            u.Stok = u.Stok + Convert.ToDecimal(tb_miktar.Text);
+            if (dm.UrunGuncelle(u))
+            {
+                MessageBox.Show("Ürün stok güncellendi", "Başarılı");
+            }
             if (dm.SatinAlmaGüncelle(s))
             {
-                Urun u = dm.UrunGetir(s.Urun_ID);
-                u.Stok = u.Stok - s.BirimAdet;
-                u.Stok = u.Stok + Convert.ToDecimal(tb_miktar.Text);
-                dm.UrunGuncelle(u);
                 MessageBox.Show("Başardık Dorothy", "Başarılı");
             }
             else
@@ -92,6 +96,8 @@ namespace UfukMarketApp
             cb_tedarikci.Text = s.TedarikciIsmi;
             tb_miktar.Text =Convert.ToString(s.BirimAdet);
             tb_alisfiyati.Text = Convert.ToString(s.AlisFiyati);
+            Urun u = dm.UrunGetir(Convert.ToInt32(cb_urun.SelectedValue));
+            tb_Birim.Text = dm.BirimGetir(u.Birim_ID).Isim;
             mtb_alindigitarih.Text = s.AlisTarihi.ToString("dd-MM-yyyy");
             btn_Guncelle.Visible = true;
             btn_YeniEkle.Enabled = true;
@@ -105,6 +111,7 @@ namespace UfukMarketApp
             {
                 Urun u = dm.UrunGetir(s.Urun_ID);
                 u.Stok = u.Stok - s.BirimAdet;
+                dm.UrunGuncelle(u);
                 dm.SatinAlmaSil(satinalmaid);
             }
             else
@@ -133,9 +140,9 @@ namespace UfukMarketApp
         {
             btn_Guncelle.Visible = false;
             btn_YeniEkle.Enabled = false;
-            tb_Birim.ReadOnly = true;
-            tb_miktar.Text = tb_alisfiyati.Text =mtb_alindigitarih.Text=tb_Birim.Text= "";
+            tb_miktar.Text = tb_alisfiyati.Text =mtb_alindigitarih.Text= "";
             CbDoldur();
+            tb_Birim.Text = "";
         }
         private void GridDoldur()
         {
