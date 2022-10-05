@@ -834,5 +834,152 @@ namespace DataAccessLayer
             }
         }
         #endregion
+        #region Satın Alma Metotları
+        public List<SatinAlma> SatinAlmaListeleReader()
+        {
+            List<SatinAlma> alimlar = new List<SatinAlma>();
+            try
+            {
+                cmd.CommandText = "SELECT A.ID, A.Urun_ID, U.Isim, A.Tedarikci_ID, T.FirmaAdi, A.BirimAdet, U.Birim_ID, B.Isim, A.AlisFiyat, A.AlisTarihi FROM Alimlar AS A JOIN Urunler AS U ON A.Urun_ID=U.ID JOIN Tedarikciler AS T ON A.Tedarikci_ID=T.ID JOIN Birimler AS B ON U.Birim_ID=B.ID";
+                cmd.Parameters.Clear();
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    alimlar.Add(new SatinAlma()
+                    {
+                        ID=reader.GetInt32(0),
+                        Urun_ID=reader.GetInt32(1),
+                        UrunIsmi = reader.GetString(2),
+                        Tedarikci_ID = reader.GetInt32(3),
+                        TedarikciIsmi = reader.GetString(4),
+                        BirimAdet = reader.GetDecimal(5),
+                        Birim_ID = reader.GetInt32(6),
+                        BirimIsmi = reader.GetString(7),
+                        AlisFiyati = reader.GetDecimal(8),
+                        AlisTarihi = reader.GetDateTime(9),
+                    });
+                }
+                return alimlar;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public bool SatinAlmaEkle(SatinAlma s)
+        {
+            try
+            {
+                cmd.CommandText = "INSERT INTO Alimlar(Urun_ID,Tedarikci_ID,BirimAdet,AlisFiyat,AlisTarihi) VALUES(@urun_id,@tedarikci_id,@birimadet,@alisfiyat,@alistarihi)";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@urun_id", s.Urun_ID);
+                cmd.Parameters.AddWithValue("@tedarikci_id", s.Tedarikci_ID);
+                cmd.Parameters.AddWithValue("@birimadet", s.BirimAdet);
+                cmd.Parameters.AddWithValue("@alisfiyat", s.AlisFiyati);
+                cmd.Parameters.AddWithValue("@alistarihi", s.AlisTarihi);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public SatinAlma SatinAlmaGetir(int id)
+        {
+            try
+            {
+                SatinAlma s = new SatinAlma();
+                cmd.CommandText = "SELECT A.ID, A.Urun_ID, U.Isim, A.Tedarikci_ID, T.FirmaAdi, A.BirimAdet, U.Birim_ID, B.Isim, A.AlisFiyat, A.AlisTarihi FROM Alimlar AS A JOIN Urunler AS U ON A.Urun_ID=U.ID JOIN Tedarikciler AS T ON A.Tedarikci_ID=T.ID JOIN Birimler AS B ON U.Birim_ID=B.ID WHERE A.ID = @id ";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id", id);
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    s = new SatinAlma()
+                    {
+                        ID = reader.GetInt32(0),
+                        Urun_ID = reader.GetInt32(1),
+                        UrunIsmi = reader.GetString(2),
+                        Tedarikci_ID = reader.GetInt32(3),
+                        TedarikciIsmi = reader.GetString(4),
+                        BirimAdet = reader.GetDecimal(5),
+                        Birim_ID = reader.GetInt32(6),
+                        BirimIsmi = reader.GetString(7),
+                        AlisFiyati = reader.GetDecimal(8),
+                        AlisTarihi = reader.GetDateTime(9),
+                    };
+                }
+                return s;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public bool SatinAlmaSil(int id)
+        {
+            try
+            {
+                cmd.CommandText = "DELETE FROM Alimlar WHERE ID= @id";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id", id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public bool SatinAlmaGüncelle(SatinAlma model)
+        {
+            try
+            {
+                cmd.CommandText = "UPDATE Tedarikciler SET Urun_ID=@urun_id, Tedarikci_ID =@tedarikci_id, BirimAdet = @birimadet, AlisFiyat=@alisfiyat, AlisTarihi=@alistarihi WHERE ID=@id";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id", model.ID);
+                cmd.Parameters.AddWithValue("@urun_id", model.Urun_ID);
+                cmd.Parameters.AddWithValue("@tedarikci_id", model.Tedarikci_ID);
+                cmd.Parameters.AddWithValue("@birimadet", model.BirimAdet);
+                cmd.Parameters.AddWithValue("@alisfiyat", model.AlisFiyati);
+                cmd.Parameters.AddWithValue("@alistarihi", model.AlisTarihi);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        #endregion
     }
 }

@@ -127,5 +127,26 @@ namespace UfukMarketApp
                 frm.Show();
             }
         }
+
+        private void TSMI_SatinAlmaIslemleri_Click(object sender, EventArgs e)
+        {
+            Form[] acikformlar = this.MdiChildren;
+            bool acikmi = false;
+
+            foreach (Form item in acikformlar)
+            {
+                if (item.GetType() == typeof(SatinAlmaIslenleri))
+                {
+                    acikmi = true;
+                    item.Activate();
+                }
+            }
+            if (acikmi == false)
+            {
+                SatinAlmaIslenleri frm = new SatinAlmaIslenleri();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+        }
     }
 }

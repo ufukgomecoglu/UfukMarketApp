@@ -41,6 +41,8 @@
             this.TSMI_BirimIslemleri = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.TSMI_UrunIslemleri = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.TSMI_SatinAlmaIslemleri = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -82,7 +84,9 @@
             this.toolStripSeparator3,
             this.TSMI_BirimIslemleri,
             this.toolStripSeparator4,
-            this.TSMI_UrunIslemleri});
+            this.TSMI_UrunIslemleri,
+            this.toolStripSeparator5,
+            this.TSMI_SatinAlmaIslemleri});
             this.işlemlerToolStripMenuItem.Name = "işlemlerToolStripMenuItem";
             this.işlemlerToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.işlemlerToolStripMenuItem.Text = "İşlemler";
@@ -139,8 +143,20 @@
             // 
             this.TSMI_UrunIslemleri.Name = "TSMI_UrunIslemleri";
             this.TSMI_UrunIslemleri.Size = new System.Drawing.Size(180, 22);
-            this.TSMI_UrunIslemleri.Text = "Ürüm İşlemleri";
+            this.TSMI_UrunIslemleri.Text = "Ürün İşlemleri";
             this.TSMI_UrunIslemleri.Click += new System.EventHandler(this.TSMI_UrunIslemleri_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
+            // 
+            // TSMI_SatinAlmaIslemleri
+            // 
+            this.TSMI_SatinAlmaIslemleri.Name = "TSMI_SatinAlmaIslemleri";
+            this.TSMI_SatinAlmaIslemleri.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_SatinAlmaIslemleri.Text = "Satın Alma İşlemleri";
+            this.TSMI_SatinAlmaIslemleri.Click += new System.EventHandler(this.TSMI_SatinAlmaIslemleri_Click);
             // 
             // AnaForm
             // 
@@ -177,5 +193,7 @@
         private System.Windows.Forms.ToolStripMenuItem TSMI_BirimIslemleri;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem TSMI_UrunIslemleri;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_SatinAlmaIslemleri;
     }
 }

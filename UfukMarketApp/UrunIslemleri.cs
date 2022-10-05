@@ -106,7 +106,7 @@ namespace UfukMarketApp
         private void CMSMI_Sil_Click(object sender, EventArgs e)
         {
             string isim = dm.UrunGetir(urunid).Isim;
-            if (MessageBox.Show(isim + "\nFirma Silinecek. Emin misin?", "Tedarikçi Sil", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show(isim + "\nFirma Silinecek. Emin misin?", "Ürün Sil", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 dm.UrunSil(urunid);
             }

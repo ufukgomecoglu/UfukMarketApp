@@ -99,11 +99,11 @@ namespace UfukMarketApp
 
             if (dm.TedarikciGuncelle(t))
             {
-                MessageBox.Show("Başardık Dorothy", "Başarılı");
+                MessageBox.Show("Güncelleme işlemi başarılı", "Başarılı");
             }
             else
             {
-                MessageBox.Show("Ne Oldu Anlamadık.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Güncelleme işlemi başarısız", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             FormTemizle();
             GridDoldur();

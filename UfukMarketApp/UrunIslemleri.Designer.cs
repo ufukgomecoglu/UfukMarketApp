@@ -33,12 +33,13 @@
             this.btn_Guncelle = new System.Windows.Forms.Button();
             this.btn_YeniEkle = new System.Windows.Forms.Button();
             this.btn_Ekle = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cb_birim = new System.Windows.Forms.ComboBox();
             this.tb_aciklama = new System.Windows.Forms.TextBox();
             this.tb_birimfiyat = new System.Windows.Forms.TextBox();
             this.tb_stok = new System.Windows.Forms.TextBox();
             this.tb_isim = new System.Windows.Forms.TextBox();
             this.nud_kdv = new System.Windows.Forms.NumericUpDown();
-            this.cb_birim = new System.Windows.Forms.ComboBox();
             this.cb_marka = new System.Windows.Forms.ComboBox();
             this.cb_kategori = new System.Windows.Forms.ComboBox();
             this.mtb_barkodno = new System.Windows.Forms.MaskedTextBox();
@@ -48,7 +49,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -123,6 +123,23 @@
             this.btn_Ekle.UseVisualStyleBackColor = true;
             this.btn_Ekle.Click += new System.EventHandler(this.btn_Ekle_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(229, 93);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(31, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Birimi";
+            // 
+            // cb_birim
+            // 
+            this.cb_birim.FormattingEnabled = true;
+            this.cb_birim.Location = new System.Drawing.Point(265, 85);
+            this.cb_birim.Name = "cb_birim";
+            this.cb_birim.Size = new System.Drawing.Size(117, 21);
+            this.cb_birim.TabIndex = 5;
+            // 
             // tb_aciklama
             // 
             this.tb_aciklama.Location = new System.Drawing.Point(458, 63);
@@ -158,14 +175,6 @@
             this.nud_kdv.Name = "nud_kdv";
             this.nud_kdv.Size = new System.Drawing.Size(296, 20);
             this.nud_kdv.TabIndex = 6;
-            // 
-            // cb_birim
-            // 
-            this.cb_birim.FormattingEnabled = true;
-            this.cb_birim.Location = new System.Drawing.Point(265, 85);
-            this.cb_birim.Name = "cb_birim";
-            this.cb_birim.Size = new System.Drawing.Size(117, 21);
-            this.cb_birim.TabIndex = 5;
             // 
             // cb_marka
             // 
@@ -246,15 +255,6 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "KDV Oranı";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(229, 93);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(31, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Birimi";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -306,6 +306,9 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(13, 225);
             this.dataGridView1.Name = "dataGridView1";
