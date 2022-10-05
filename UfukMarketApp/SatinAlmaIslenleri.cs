@@ -38,7 +38,10 @@ namespace UfukMarketApp
                 FormTemizle();
                 Urun u = dm.UrunGetir(s.Urun_ID);
                 u.Stok = u.Stok + s.BirimAdet;
-                dm.UrunGuncelle(u);
+                if (dm.UrunGuncelle(u))
+                {
+                    MessageBox.Show("Ürün stok güncellendi", "Başarılı");
+                }
                 MessageBox.Show("Ekleme İşlemi Başarılı", "Bilgi");
             }
             else
@@ -59,17 +62,17 @@ namespace UfukMarketApp
             Urun u = dm.UrunGetir(s.Urun_ID);
             u.Stok = u.Stok - eskisatinalinan;
             u.Stok = u.Stok + Convert.ToDecimal(tb_miktar.Text);
-            if (dm.UrunGuncelle(u))
-            {
-                MessageBox.Show("Ürün stok güncellendi", "Başarılı");
-            }
             if (dm.SatinAlmaGüncelle(s))
             {
-                MessageBox.Show("Başardık Dorothy", "Başarılı");
+                MessageBox.Show("Güncelleme işlemi başarılı", "Başarılı");
+                if (dm.UrunGuncelle(u))
+                {
+                    MessageBox.Show("Ürün stok güncellendi", "Başarılı");
+                }
             }
             else
             {
-                MessageBox.Show("Ne Oldu Anlamadık.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Güncelleme işlemi başarısız", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             FormTemizle();
             GridDoldur();
@@ -111,7 +114,10 @@ namespace UfukMarketApp
             {
                 Urun u = dm.UrunGetir(s.Urun_ID);
                 u.Stok = u.Stok - s.BirimAdet;
-                dm.UrunGuncelle(u);
+                if (dm.UrunGuncelle(u))
+                {
+                    MessageBox.Show("Ürün stok güncellendi", "Başarılı");
+                }
                 dm.SatinAlmaSil(satinalmaid);
             }
             else
