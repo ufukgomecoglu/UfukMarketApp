@@ -18,7 +18,6 @@ namespace DataAccessLayer
             cmd = con.CreateCommand();
         }
         #region Kullanıcı Metotları
-
         public KullaniciLoginModel KullaniciGiris(string kullaniciAdi, string sifre)
         {
             try
@@ -57,10 +56,8 @@ namespace DataAccessLayer
                 con.Close();
             }
         }
-
         #endregion
         #region Tedarikçi Metotları
-
         public List<Tedarikci> TedarikciListeleReader()
         {
             List<Tedarikci> tedarikciler = new List<Tedarikci>();
@@ -213,7 +210,6 @@ namespace DataAccessLayer
                 con.Close();
             }
         }
-
         #endregion
         #region Şehir İlçe Metotları
         public List<Sehir> SehirleriListele()
@@ -658,6 +654,171 @@ namespace DataAccessLayer
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@id", model.ID);
                 cmd.Parameters.AddWithValue("@isim", model.Isim);
+                cmd.Parameters.AddWithValue("@durum", model.Durum);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        #endregion
+        #region Urun Metotları
+        public List<Urun> UrunListeleReader()
+        {
+            List<Urun> urunler = new List<Urun>();
+            try
+            {
+                cmd.CommandText = "SELECT U.ID, U.BarkodNo, U.Kategori_ID, K.Isim, U.Marka_ID, M.Isim, U.Birim_ID, B.Isim, U.KDVOrani, U.Isim, U.Stok, U.Aciklama, U.BirimFiyat, U.Durum FROM Urunler AS U JOIN Kategoriler AS K ON U.Kategori_ID=K.ID JOIN Markalar AS M ON U.Marka_ID=M.ID JOIN Birimler AS B ON U.Birim_ID=B.ID WHERE U.Silinmis=0";
+                cmd.Parameters.Clear();
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    urunler.Add(new Urun()
+                    {
+                        ID = reader.GetInt32(0),
+                        BarkodNo = reader.GetString(1),
+                        Kategori_ID= reader.GetInt32(2),
+                        KategoriIsmi = reader.GetString(3),
+                        Marka_ID = reader.GetInt32(4),
+                        MarkaIsmi=reader.GetString(5),
+                        Birim_ID = reader.GetInt32(6),
+                        BirimIsmi = reader.GetString(7),
+                        KDVOrani = reader.GetInt32(8),
+                        Isim = reader.GetString(9),
+                        Stok = reader.GetDecimal(10),
+                        Aciklama = reader.GetString(11),
+                        BirimFiyat = reader.GetDecimal(12),
+                        Durum = reader.GetBoolean(13),
+                    }); 
+                }
+                return urunler;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public bool UrunEkle(Urun u)
+        {
+            try
+            {
+                cmd.CommandText = "INSERT INTO Urunler(BarkodNo, Kategori_ID, Marka_ID, Birim_ID, KDVOrani, Isim, Stok, Aciklama, BirimFiyat, Durum, Silinmis) VALUES(@barkodno, @kategori_id, @marka_id, @birim_id, @kdvorani, @isim, @stok, @aciklama, @birimfiyat, @durum, 0)";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@barkodno", u.BarkodNo);
+                cmd.Parameters.AddWithValue("@kategori_id", u.Kategori_ID);
+                cmd.Parameters.AddWithValue("@marka_id", u.Marka_ID);
+                cmd.Parameters.AddWithValue("@birim_id", u.Birim_ID);
+                cmd.Parameters.AddWithValue("@kdvorani", u.KDVOrani);
+                cmd.Parameters.AddWithValue("@isim", u.Isim);
+                cmd.Parameters.AddWithValue("@stok", u.Stok);
+                cmd.Parameters.AddWithValue("@aciklama", u.Aciklama);
+                cmd.Parameters.AddWithValue("@birimfiyat", u.BirimFiyat);
+                cmd.Parameters.AddWithValue("@durum", u.Durum);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public Urun UrunGetir(int id)
+        {
+            try
+            {
+                Urun u = new Urun();
+                cmd.CommandText = "SELECT U.ID, U.BarkodNo, U.Kategori_ID, K.Isim, U.Marka_ID, M.Isim, U.Birim_ID, B.Isim, U.KDVOrani, U.Isim, U.Stok, U.Aciklama, U.BirimFiyat, U.Durum FROM Urunler AS U JOIN Kategoriler AS K ON U.Kategori_ID=K.ID JOIN Markalar AS M ON U.Marka_ID=M.ID JOIN Birimler AS B ON U.Birim_ID=B.ID WHERE U.ID=@id";
+                cmd.Parameters.Clear();
+                con.Open();
+                cmd.Parameters.AddWithValue("@id", id);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    u=new Urun()
+                    {
+                        ID = reader.GetInt32(0),
+                        BarkodNo = reader.GetString(1),
+                        Kategori_ID = reader.GetInt32(2),
+                        KategoriIsmi = reader.GetString(3),
+                        Marka_ID = reader.GetInt32(4),
+                        MarkaIsmi = reader.GetString(5),
+                        Birim_ID = reader.GetInt32(6),
+                        BirimIsmi = reader.GetString(7),
+                        KDVOrani = reader.GetInt32(8),
+                        Isim = reader.GetString(9),
+                        Stok = reader.GetDecimal(10),
+                        Aciklama = reader.GetString(11),
+                        BirimFiyat = reader.GetDecimal(12),
+                        Durum = reader.GetBoolean(13),
+                    };
+                }
+                return u;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public bool UrunSil(int id)
+        {
+            try
+            {
+                cmd.CommandText = "UPDATE Urunler SET Silinmis=1 WHERE ID= @id";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id", id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public bool UrunGuncelle(Urun model)
+        {
+            try
+            {
+                cmd.CommandText = "UPDATE Urunler SET BarkodNo=@barkodno, Kategori_ID =@kategori_id, Marka_ID = @marka_id, Birim_ID=@birim_id, KDVOrani=@kdvorani, Isim=@isim, Stok=@stok, Aciklama=@aciklama, BirimFiyat=@birimfiyat, Durum=@durum WHERE ID=@id";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id", model.ID);
+                cmd.Parameters.AddWithValue("@barkodno", model.BarkodNo);
+                cmd.Parameters.AddWithValue("@kategori_id", model.Kategori_ID);
+                cmd.Parameters.AddWithValue("@marka_id", model.Marka_ID);
+                cmd.Parameters.AddWithValue("@birim_id", model.Birim_ID);
+                cmd.Parameters.AddWithValue("@kdvorani", model.KDVOrani);
+                cmd.Parameters.AddWithValue("@isim", model.Isim);
+                cmd.Parameters.AddWithValue("@stok", model.Stok);
+                cmd.Parameters.AddWithValue("@aciklama", model.Aciklama);
+                cmd.Parameters.AddWithValue("@birimfiyat", model.BirimFiyat);
                 cmd.Parameters.AddWithValue("@durum", model.Durum);
                 con.Open();
                 cmd.ExecuteNonQuery();
