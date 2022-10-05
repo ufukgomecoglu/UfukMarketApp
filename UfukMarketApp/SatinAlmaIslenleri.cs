@@ -92,7 +92,7 @@ namespace UfukMarketApp
             cb_tedarikci.Text = s.TedarikciIsmi;
             tb_miktar.Text =Convert.ToString(s.BirimAdet);
             tb_alisfiyati.Text = Convert.ToString(s.AlisFiyati);
-            mtb_alindigitarih.Text =Convert.ToString(s.AlisTarihi);
+            mtb_alindigitarih.Text = s.AlisTarihi.ToString("dd-MM-yyyy");
             btn_Guncelle.Visible = true;
             btn_YeniEkle.Enabled = true;
         }

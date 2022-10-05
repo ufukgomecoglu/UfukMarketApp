@@ -959,7 +959,7 @@ namespace DataAccessLayer
         {
             try
             {
-                cmd.CommandText = "UPDATE Tedarikciler SET Urun_ID=@urun_id, Tedarikci_ID =@tedarikci_id, BirimAdet = @birimadet, AlisFiyat=@alisfiyat, AlisTarihi=@alistarihi WHERE ID=@id";
+                cmd.CommandText = "UPDATE Alimlar SET Urun_ID=@urun_id, Tedarikci_ID =@tedarikci_id, BirimAdet = @birimadet, AlisFiyat=@alisfiyat, AlisTarihi=@alistarihi WHERE ID=@id";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@id", model.ID);
                 cmd.Parameters.AddWithValue("@urun_id", model.Urun_ID);
