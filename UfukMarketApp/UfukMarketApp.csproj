@@ -84,12 +84,6 @@
     <Compile Include="SatinAlmaIslenleri.Designer.cs">
       <DependentUpon>SatinAlmaIslenleri.cs</DependentUpon>
     </Compile>
-    <Compile Include="SatisIslemleri.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SatisIslemleri.Designer.cs">
-      <DependentUpon>SatisIslemleri.cs</DependentUpon>
-    </Compile>
     <Compile Include="TedarikciIslemleri.cs">
       <SubType>Form</SubType>
     </Compile>
