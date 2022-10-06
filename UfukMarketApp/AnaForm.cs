@@ -148,5 +148,27 @@ namespace UfukMarketApp
                 frm.Show();
             }
         }
+
+        private void TSMI_StisIslemleri_Click(object sender, EventArgs e)
+        {
+            Form[] acikformlar = this.MdiChildren;
+            bool acikmi = false;
+
+            foreach (Form item in acikformlar)
+            {
+                if (item.GetType() == typeof(Satisİslemleri))
+                {
+                    acikmi = true;
+                    item.Activate();
+                }
+            }
+            if (acikmi == false)
+            {
+                Satisİslemleri frm = new Satisİslemleri();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+
+        }
     }
 }

@@ -16,5 +16,20 @@ namespace UfukMarketApp
         {
             InitializeComponent();
         }
+
+        private void btn_satis_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_satisiptal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
