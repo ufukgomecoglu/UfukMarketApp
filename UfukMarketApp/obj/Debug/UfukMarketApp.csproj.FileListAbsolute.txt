@@ -35,3 +35,4 @@ C:\Users\ufukg\Documents\GitHub\UfukMarketApp\UfukMarketApp\obj\Debug\UfukMarket
 C:\Users\ufukg\Documents\GitHub\UfukMarketApp\UfukMarketApp\obj\Debug\UfukMarketApp.BirimIslemleri.resources
 C:\Users\ufukg\Documents\GitHub\UfukMarketApp\UfukMarketApp\obj\Debug\UfukMarketApp.UrunIslemleri.resources
 C:\Users\ufukg\Documents\GitHub\UfukMarketApp\UfukMarketApp\obj\Debug\UfukMarketApp.SatinAlmaIslenleri.resources
+C:\Users\ufukg\Documents\GitHub\UfukMarketApp\UfukMarketApp\obj\Debug\UfukMarketApp.Satisİslemleri.resources
