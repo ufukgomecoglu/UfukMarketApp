@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -974,6 +975,171 @@ namespace DataAccessLayer
             catch
             {
                 return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        #endregion
+        #region Satis Metatoları
+        public List<Satis> SatisListeleReader()
+        {
+            List<Satis> satislar = new List<Satis>();
+            try
+            {
+                cmd.CommandText = "SELECT * FROM Satislar";
+                cmd.Parameters.Clear();
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    satislar.Add(new Satis()
+                    {
+                        ID = reader.GetInt32(0),
+                        Kullanici_ID = reader.GetInt32(1),
+                        AraToplam=reader.GetDecimal(2),
+                        Toplam=reader.GetDecimal(3),
+                        KDV=reader.GetDecimal(4),
+                        SatisTarihi = reader.GetDateTime(5)
+                    });
+                }
+                return satislar;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public bool SatisEkle(Satis s)
+        {
+            try
+            {
+                cmd.CommandText = "INSERT INTO Tedarikciler(Kullanici_ID, AraToplam, Toplam, KDV, SatisTarihi) VALUES(@kullanici_id, @aratoplam, @toplam, @kdv, @satistarihi)";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@kullanici_id", s.Kullanici_ID);
+                cmd.Parameters.AddWithValue("@aratoplam", s.AraToplam);
+                cmd.Parameters.AddWithValue("@toplam", s.Toplam);
+                cmd.Parameters.AddWithValue("@kdv", s.KDV);
+                cmd.Parameters.AddWithValue("@satistarihi", s.SatisTarihi);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        #endregion
+        #region SatisDetay Metotları
+        public List<SatisDetaylari> SatisDetayListeleReader()
+        {
+            List<SatisDetaylari> satisdetaylar = new List<SatisDetaylari>();
+            try
+            {
+                cmd.CommandText = "SELECT S.ID, S.Satis_ID,S.Urun_ID,S.ADET,S.BirimFiyat,S.AraToplam,S.Toplam,S.KDV,U.KDVOrani FROM SatisDetaylar AS S JOIN Urunler AS U ON U.ID=S.Urun_ID";
+                cmd.Parameters.Clear();
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    satisdetaylar.Add(new SatisDetaylari()
+                    {
+                        ID = reader.GetInt32(0),
+                        Satis_ID = reader.GetInt32(1),
+                        Urun_ID = reader.GetInt32(2),
+                        Adet = reader.GetDecimal(3),
+                        BirimFiyat = reader.GetDecimal(4),
+                        AraToplam = reader.GetDecimal(5),
+                        Toplam = reader.GetDecimal(6),
+                        KDV = reader.GetDecimal(7),
+                        KDVOrani = reader.GetInt32(8),
+                    });
+                }
+                return satisdetaylar;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public bool SatisDetayEkle(SatisDetaylari s)
+        {
+            try
+            {
+                cmd.CommandText = "INSERT INTO SatisDetaylar(ID ,Urun_ID, Adet, BirimFiyat, AraToplam, Toplam, KDV) VALUES(@id ,@urun_id, @adet, @birimfiyat, @aratoplam, @toplam, @kdv)";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id", s.ID);
+                cmd.Parameters.AddWithValue("@urun_id", s.Urun_ID);
+                cmd.Parameters.AddWithValue("@adet", s.Adet);
+                cmd.Parameters.AddWithValue("@birimfiyat", s.BirimFiyat);
+                cmd.Parameters.AddWithValue("@aratoplam", s.AraToplam);
+                cmd.Parameters.AddWithValue("@toplam", s.Toplam);
+                cmd.Parameters.AddWithValue("@kdv", s.KDV);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public Urun UrunGetir(string barkodno)
+        {
+            try
+            {
+                Urun u = new Urun();
+                cmd.CommandText = "SELECT U.ID, U.BarkodNo, U.Kategori_ID, K.Isim, U.Marka_ID, M.Isim, U.Birim_ID, B.Isim, U.KDVOrani, U.Isim, U.Stok, U.Aciklama, U.BirimFiyat, U.Durum FROM Urunler AS U JOIN Kategoriler AS K ON U.Kategori_ID=K.ID JOIN Markalar AS M ON U.Marka_ID=M.ID JOIN Birimler AS B ON U.Birim_ID=B.ID WHERE U.BarkodNo=@id";
+                cmd.Parameters.Clear();
+                con.Open();
+                cmd.Parameters.AddWithValue("@id", barkodno);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    u = new Urun()
+                    {
+                        ID = reader.GetInt32(0),
+                        BarkodNo = reader.GetString(1),
+                        Kategori_ID = reader.GetInt32(2),
+                        KategoriIsmi = reader.GetString(3),
+                        Marka_ID = reader.GetInt32(4),
+                        MarkaIsmi = reader.GetString(5),
+                        Birim_ID = reader.GetInt32(6),
+                        BirimIsmi = reader.GetString(7),
+                        KDVOrani = reader.GetInt32(8),
+                        Isim = reader.GetString(9),
+                        Stok = reader.GetDecimal(10),
+                        Aciklama = reader.GetString(11),
+                        BirimFiyat = reader.GetDecimal(12),
+                        Durum = reader.GetBoolean(13),
+                    };
+                }
+                return u;
+            }
+            catch (Exception)
+            {
+
+                return null;
             }
             finally
             {

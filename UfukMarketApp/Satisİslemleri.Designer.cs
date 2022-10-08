@@ -31,8 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tb_urun = new System.Windows.Forms.TextBox();
-            this.btn_satisiptal = new System.Windows.Forms.Button();
-            this.btn_satis = new System.Windows.Forms.Button();
+            this.btn_SatisYap = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -58,7 +57,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.CMSMI_SatisDetaylari = new System.Windows.Forms.ToolStripMenuItem();
+            this.CMSMI_Guncelle = new System.Windows.Forms.ToolStripMenuItem();
+            this.CMSMI_Sil = new System.Windows.Forms.ToolStripMenuItem();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tb_tumtoplam = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -72,8 +74,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.tb_urun);
-            this.groupBox1.Controls.Add(this.btn_satisiptal);
-            this.groupBox1.Controls.Add(this.btn_satis);
+            this.groupBox1.Controls.Add(this.btn_SatisYap);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.tb_kdvtuzdesi);
@@ -105,33 +106,24 @@
             this.tb_urun.Size = new System.Drawing.Size(283, 20);
             this.tb_urun.TabIndex = 20;
             // 
-            // btn_satisiptal
+            // btn_SatisYap
             // 
-            this.btn_satisiptal.Location = new System.Drawing.Point(434, 197);
-            this.btn_satisiptal.Name = "btn_satisiptal";
-            this.btn_satisiptal.Size = new System.Drawing.Size(157, 23);
-            this.btn_satisiptal.TabIndex = 19;
-            this.btn_satisiptal.Text = "Satış İptal";
-            this.btn_satisiptal.UseVisualStyleBackColor = true;
-            this.btn_satisiptal.Click += new System.EventHandler(this.btn_satisiptal_Click);
-            // 
-            // btn_satis
-            // 
-            this.btn_satis.Location = new System.Drawing.Point(597, 197);
-            this.btn_satis.Name = "btn_satis";
-            this.btn_satis.Size = new System.Drawing.Size(172, 23);
-            this.btn_satis.TabIndex = 18;
-            this.btn_satis.Text = "Satış";
-            this.btn_satis.UseVisualStyleBackColor = true;
-            this.btn_satis.Click += new System.EventHandler(this.btn_satis_Click);
+            this.btn_SatisYap.Location = new System.Drawing.Point(10, 197);
+            this.btn_SatisYap.Name = "btn_SatisYap";
+            this.btn_SatisYap.Size = new System.Drawing.Size(157, 23);
+            this.btn_SatisYap.TabIndex = 19;
+            this.btn_SatisYap.Text = "Satış Yap";
+            this.btn_SatisYap.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.tb_tumtoplam);
             this.groupBox3.Controls.Add(this.radioButton2);
             this.groupBox3.Controls.Add(this.radioButton1);
+            this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Location = new System.Drawing.Point(434, 128);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(335, 63);
+            this.groupBox3.Size = new System.Drawing.Size(335, 92);
             this.groupBox3.TabIndex = 17;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Ödeme Şekli";
@@ -139,7 +131,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(142, 20);
+            this.radioButton2.Location = new System.Drawing.Point(153, 57);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(72, 17);
             this.radioButton2.TabIndex = 1;
@@ -150,7 +142,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(7, 20);
+            this.radioButton1.Location = new System.Drawing.Point(18, 57);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(48, 17);
             this.radioButton1.TabIndex = 0;
@@ -289,6 +281,7 @@
             this.tb_miktar.Name = "tb_miktar";
             this.tb_miktar.Size = new System.Drawing.Size(283, 20);
             this.tb_miktar.TabIndex = 5;
+            this.tb_miktar.TextChanged += new System.EventHandler(this.tb_miktar_TextChanged);
             // 
             // tb_barkono
             // 
@@ -296,6 +289,7 @@
             this.tb_barkono.Name = "tb_barkono";
             this.tb_barkono.Size = new System.Drawing.Size(283, 20);
             this.tb_barkono.TabIndex = 3;
+            this.tb_barkono.TextChanged += new System.EventHandler(this.tb_barkono_TextChanged);
             // 
             // label3
             // 
@@ -334,20 +328,42 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(775, 187);
             this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CMSMI_SatisDetaylari});
+            this.CMSMI_Guncelle,
+            this.CMSMI_Sil});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(195, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(121, 48);
             // 
-            // CMSMI_SatisDetaylari
+            // CMSMI_Guncelle
             // 
-            this.CMSMI_SatisDetaylari.Name = "CMSMI_SatisDetaylari";
-            this.CMSMI_SatisDetaylari.Size = new System.Drawing.Size(194, 22);
-            this.CMSMI_SatisDetaylari.Text = "Satış Detaylarını Göster";
+            this.CMSMI_Guncelle.Name = "CMSMI_Guncelle";
+            this.CMSMI_Guncelle.Size = new System.Drawing.Size(120, 22);
+            this.CMSMI_Guncelle.Text = "Güncelle";
+            // 
+            // CMSMI_Sil
+            // 
+            this.CMSMI_Sil.Name = "CMSMI_Sil";
+            this.CMSMI_Sil.Size = new System.Drawing.Size(120, 22);
+            this.CMSMI_Sil.Text = "Sil";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(4, 26);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(62, 13);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "Tüm toplam";
+            // 
+            // tb_tumtoplam
+            // 
+            this.tb_tumtoplam.Location = new System.Drawing.Point(72, 19);
+            this.tb_tumtoplam.Name = "tb_tumtoplam";
+            this.tb_tumtoplam.Size = new System.Drawing.Size(100, 20);
+            this.tb_tumtoplam.TabIndex = 3;
             // 
             // Satisİslemleri
             // 
@@ -358,6 +374,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "Satisİslemleri";
             this.Text = "Satış İşlemleri";
+            this.Load += new System.EventHandler(this.Satisİslemleri_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -383,8 +400,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tb_miktar;
-        private System.Windows.Forms.Button btn_satisiptal;
-        private System.Windows.Forms.Button btn_satis;
+        private System.Windows.Forms.Button btn_SatisYap;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
@@ -401,6 +417,9 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox tb_urun;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem CMSMI_SatisDetaylari;
+        private System.Windows.Forms.ToolStripMenuItem CMSMI_Guncelle;
+        private System.Windows.Forms.ToolStripMenuItem CMSMI_Sil;
+        private System.Windows.Forms.TextBox tb_tumtoplam;
+        private System.Windows.Forms.Label label11;
     }
 }

@@ -112,6 +112,7 @@ namespace UfukMarketApp
             }
             else
             {
+                DataTable dt = new DataTable();
                 MessageBox.Show("Kullanıcı Silme İşlemini İptal Etti", "İptal");
             }
             GridDoldur();
